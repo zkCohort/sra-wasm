@@ -1,5 +1,10 @@
 # SRA WASM Library
 
+![Build Status](https://github.com/zkCohort/sra-wasm/actions/workflows/rust.yml/badge.svg?branch=main)
+[![Crate Version](https://img.shields.io/crates/v/sra-wasm.svg)](https://crates.io/crates/sra-wasm)
+![License](https://img.shields.io/crates/l/sra-wasm)
+[![Documentation](https://docs.rs/sra-wasm/badge.svg)](https://docs.rs/sra-wasm)
+
 ## Overview
 
 This Rust library utilizes WebAssembly (WASM) to implement encryption and decryption methods based on the SRA algorithm. It provides functions for generating encryption keys, encrypting and decrypting messages, and supporting operations such as modular exponentiation and extended Euclidean algorithm. The library is intended to be used in a web application, and is designed to be compiled to WASM and used in a JavaScript application.
@@ -59,7 +64,7 @@ To use this library, you need to have Rust and wasm-bindgen installed. You can t
 
 ```
 [dependencies]
-sra_wasm = "0.0.2"
+sra_wasm = "0.0.3"
 
 
 Then, in your main.rs file, you can use the library functions as follows:
