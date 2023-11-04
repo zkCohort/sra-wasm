@@ -41,18 +41,20 @@ SRA is an algorithm developed by the inventors of RSA, Shamir, Rivest and Adlema
 
 Here is a brief description of the functions implemented in the library:
 
-- `js_generate_phi_n(bit_size: usize) -> JsValue`: Generates a shared phi and N while keeping p and q secret.
-- `js_generate_key_pair(js_phi: &str, js_n: &str) -> JsValue`: Generates an SRA key pair.
-- `js_encrypt(js_message: &str, js_e: &str, js_n: &str) -> JsValue`: Encrypts a message using SRA encryption.
-- `js_decrypt(js_cipher: &str, js_d: &str, js_n: &str) -> JsValue`: Decrypts a cipher using SRA decryption.
-- `exp_by_squaring(base: &BigInt, exp: &BigInt, modulus: &BigInt) -> BigInt`: Implements the exponentiation by squaring algorithm.
-- `encrypt(message: &BigInt, e: &BigInt, n: &BigInt) -> BigInt`: Encrypts a message using SRA encryption.
-- `decrypt(cipher: &BigInt, d: &BigInt, n: &BigInt) -> BigInt`: Decrypts a cipher using SRA decryption.
-- `get_fixed_sized_prime(bit_size: usize) -> BigInt`: Generates a fixed-size prime number.
-- `generate_phi_n(bit_size: usize) -> (BigInt, BigInt)`: Generates a shared phi and N while keeping p and q secret.
-- `extended_gcd(a: &BigInt, b: &BigInt) -> (BigInt, BigInt, BigInt)`: Implements the extended Euclidean algorithm.
-- `mod_inverse(a: &BigInt, m: &BigInt) -> Option<BigInt>`: Calculates the modular inverse of a number.
-- `generate_key_pair(phi: &BigInt, n: &BigInt) -> (BigInt, BigInt)`: Generates an SRA key pair.
+- `js_generate_phi_n`: Generates a shared phi and N while keeping p and q secret.
+- `js_generate_key_pair`: Generates an SRA key pair.
+- `js_encrypt`: Encrypts a message using SRA encryption.
+- `js_decrypt`: Decrypts a cipher using SRA decryption.
+  
+  -----
+- `exp_by_squaring`: Implements the exponentiation by squaring algorithm.
+- `encrypt`: Encrypts a message using SRA encryption.
+- `decrypt`: Decrypts a cipher using SRA decryption.
+- `get_fixed_sized_prime`: Generates a fixed-size prime number.
+- `generate_phi_n`: Generates a shared phi and N while keeping p and q secret.
+- `extended_gcd`: Implements the extended Euclidean algorithm.
+- `mod_inverse`: Calculates the modular inverse of a number.
+- `generate_key_pair`: Generates an SRA key pair.
 
 ## Tests
 
@@ -62,23 +64,24 @@ The library includes a suite of tests to ensure correctness of the implemented f
 
 To use this library, you need to have Rust and wasm-bindgen installed. You can then include it in your project by adding the following to your Cargo.toml file:
 
-```
+```toml
 [dependencies]
-sra_wasm = "0.0.3"
-
+sra_wasm = "0.1.0"
+```
 
 Then, in your main.rs file, you can use the library functions as follows:
 
-```
-
+```rust
 use sra_wasm::\*;
 fn main() {
 // Use the library functions here
 }
+```
 
 ## Contribution
 
 Contributions to this project are welcome. If you find a bug or want to add a new feature, please open an issue or submit a pull request. If your code adds new functionality, please write tests to confirm the new features function as expected.
+Make sure to incorporate your changes into the CHANGELOG.md file as well.
 
 ## License
 
