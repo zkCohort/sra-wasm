@@ -59,7 +59,7 @@ To use this library, you need to have Rust and wasm-bindgen installed. You can t
 
 ```
 [dependencies]
-sra_wasm = "0.0.1"
+sra_wasm = "0.0.2"
 
 
 Then, in your main.rs file, you can use the library functions as follows:
