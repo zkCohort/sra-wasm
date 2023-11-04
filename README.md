@@ -78,7 +78,3 @@ Contributions to this project are welcome. If you find a bug or want to add a ne
 ## License
 
 This project is licensed under the GNU GPLv3 license. See the LICENSE file for details.
-
-```
-
-```
