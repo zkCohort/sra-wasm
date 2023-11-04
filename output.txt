@@ -1,20 +1,4 @@
-
-[INFO]: 🎯  Checking for the Wasm target...
-    Finished dev [unoptimized + debuginfo] target(s) in 0.25s
-[INFO]: ⬇️  Installing wasm-bindgen...
-    Finished test [unoptimized + debuginfo] target(s) in 0.24s
-     Running unittests src/lib.rs (target/wasm32-unknown-unknown/debug/deps/zk_poker_worker-3ee4807ad0864e89.wasm)
-     
-> zkpoker@0.0.0 test:wasm
-> cd ./src/workers/zkPokerWorker && wasm-pack test --node
-
-Set timeout to 20 seconds...
-Executing bindgen...                              
-                                                  
 running 5 tests
-
-
-
 
 ===================
 d1 = 29, d2 = 31

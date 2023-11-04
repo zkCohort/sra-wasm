@@ -1,6 +1,4 @@
 use wasm_bindgen::prelude::*;
-// use snarkvm_wasm::network::Testnet3;
-// use snarkvm_wasm::types::Field;
 use num_integer::Integer;
 use std::str::FromStr;
 use num_prime::{RandPrime, BitTest};

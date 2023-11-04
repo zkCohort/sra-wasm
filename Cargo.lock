@@ -248,6 +248,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e1cf6437eb19a8f4a6cc0f7dca544973b0b78843adbfeb3683d1a94a0024a294"
 
 [[package]]
+name = "sra-wasm"
+version = "0.0.1"
+dependencies = [
+ "getrandom",
+ "js-sys",
+ "num-bigint",
+ "num-integer",
+ "num-prime",
+ "num-traits",
+ "rand",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+]
+
+[[package]]
 name = "syn"
 version = "2.0.38"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -389,19 +404,4 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05f360fc0b24296329c78fda852a1e9ae82de9cf7b27dae4b7f62f118f77b9ed"
 dependencies = [
  "tap",
-]
-
-[[package]]
-name = "zk_poker_worker"
-version = "0.0.1"
-dependencies = [
- "getrandom",
- "js-sys",
- "num-bigint",
- "num-integer",
- "num-prime",
- "num-traits",
- "rand",
- "wasm-bindgen",
- "wasm-bindgen-test",
 ]
