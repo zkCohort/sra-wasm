@@ -1,8 +1,12 @@
 [package]
 name = "sra-wasm"
 description = "A wasm implementation of the SRA protocol"
+authors = ["Andrew Rosborough <arosborough@oculat.us>"]
 license = "GPL-3.0"
-version = "0.0.2"
+version = "0.0.3"
+repository = "https://github.com/zkCohort/sra-wasm"
+documentation = "https://docs.rs/sra-wasm"
+changelog = "https://github.com/zkCohort/sra-wasm/blob/main/CHANGELOG.md"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

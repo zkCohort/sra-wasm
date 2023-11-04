@@ -25,10 +25,9 @@ pub fn js_generate_phi_n(bit_size: usize) -> JsValue {
 }
 
 #[wasm_bindgen]
-pub fn js_generate_key_pair(js_phi: &str, js_n: &str) -> JsValue {
+pub fn js_generate_key_pair(js_phi: &str) -> JsValue {
     let phi = BigInt::from_str(js_phi).unwrap();
-    let n = BigInt::from_str(js_n).unwrap();
-    let (e, d) = generate_key_pair(&phi, &n);
+    let (e, d) = generate_key_pair(&phi);
     let obj = js_sys::Object::new();
     js_sys::Reflect::set(&obj, &"e".into(), &JsValue::from_str(&e.to_string())).unwrap();
     js_sys::Reflect::set(&obj, &"d".into(), &JsValue::from_str(&d.to_string())).unwrap();
@@ -59,7 +58,7 @@ pub fn js_decrypt(js_cipher: &str, js_d: &str, js_n: &str) -> JsValue {
 
 fn exp_by_squaring(base: &BigInt, exp: &BigInt, modulus: &BigInt) -> BigInt {
     if *exp == Zero::zero() {
-        return One::one();
+        One::one()
     } else if exp.is_even() {
         let half = exp.clone() >> 1; // Divide by 2
         let half_exp = exp_by_squaring(base, &half, modulus);
@@ -129,7 +128,7 @@ fn mod_inverse(a: &BigInt, m: &BigInt) -> Option<BigInt> {
 }
 
 // Generate a key pair.
-fn generate_key_pair(phi: &BigInt, n: &BigInt) -> (BigInt, BigInt) {
+fn generate_key_pair(phi: &BigInt) -> (BigInt, BigInt) {
     let mut rng = rand::thread_rng();
     let mut e: BigInt;
     let limit: usize = u128::MAX as usize / 2;
@@ -142,10 +141,10 @@ fn generate_key_pair(phi: &BigInt, n: &BigInt) -> (BigInt, BigInt) {
         }
     }
 
-    if let Some(d) = mod_inverse(&e, &phi) {
+    if let Some(d) = mod_inverse(&e, phi) {
         (e, d)
     } else {
-        generate_key_pair(phi, n)
+        generate_key_pair(phi)
     }
 }
 
@@ -195,7 +194,7 @@ mod tests {
     fn test_generate_key_pair() {
         log(&format!("\n\n"));
         let (phi, n) = generate_phi_n(32);
-        let (e, d) = generate_key_pair(&phi, &n);
+        let (e, d) = generate_key_pair(&phi);
         let midpoint = 52u8 / 2;
         
         // Initialize with default values
@@ -203,7 +202,7 @@ mod tests {
         let mut deck_d: [[String; 26]; 2] = Default::default();
 
         for i in 0u8..52u8 {
-            let value: JsValue = js_generate_key_pair(&phi.to_string(), &n.to_string());
+            let value: JsValue = js_generate_key_pair(&phi.to_string());
             let e1 = js_sys::Reflect::get(&value, &"e".into()).unwrap().as_string().unwrap().parse::<u32>().unwrap();
             let d1 = js_sys::Reflect::get(&value, &"d".into()).unwrap().as_string().unwrap().parse::<u32>().unwrap();
             
@@ -246,10 +245,10 @@ mod tests {
         // Shared p, q, n
         let (phi, n) = generate_phi_n(32);
         // Alice key pair (e1, d1)
-        let (e1, d1) = generate_key_pair(&phi, &n);
+        let (e1, d1) = generate_key_pair(&phi);
         // Bob key pair (e2, d2)
         // let (e2, d2) = generate_key_pair_given_n(248, &n);
-        let (e2, d2) = generate_key_pair(&phi, &n);
+        let (e2, d2) = generate_key_pair(&phi);
         assert!(e1 < n);
         assert!(e2 < n);
         assert!(e1 != e2);
